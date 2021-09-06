@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.order;
+package com.redhat.microsaga.model;
 
 import java.util.Objects;
 import java.util.Arrays;
@@ -20,7 +20,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.redhat.microsaga.model.order.ProductItem;
+import com.redhat.microsaga.model.OrderAllOf;
+import com.redhat.microsaga.model.OrderInfo;
+import com.redhat.microsaga.model.ProductItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,10 +30,69 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * OrderInfo
+ * Order
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T17:56:06.202405+02:00[Europe/Paris]")
-public class OrderInfo {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T18:48:12.918943+02:00[Europe/Paris]")
+public class Order {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  /**
+   * Status of Order
+   */
+  @JsonAdapter(StatusEnum.Adapter.class)
+  public enum StatusEnum {
+    CREATED("CREATED"),
+    
+    VALIDATED("VALIDATED"),
+    
+    CANCELED("CANCELED"),
+    
+    FAILED("FAILED");
+
+    private String value;
+
+    StatusEnum(String value) {
+      this.value = value;
+    }
+
+    public String getValue() {
+      return value;
+    }
+
+    @Override
+    public String toString() {
+      return String.valueOf(value);
+    }
+
+    public static StatusEnum fromValue(String value) {
+      for (StatusEnum b : StatusEnum.values()) {
+        if (b.value.equals(value)) {
+          return b;
+        }
+      }
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+    }
+
+    public static class Adapter extends TypeAdapter<StatusEnum> {
+      @Override
+      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
+        jsonWriter.value(enumeration.getValue());
+      }
+
+      @Override
+      public StatusEnum read(final JsonReader jsonReader) throws IOException {
+        String value =  jsonReader.nextString();
+        return StatusEnum.fromValue(value);
+      }
+    }
+  }
+
+  public static final String SERIALIZED_NAME_STATUS = "status";
+  @SerializedName(SERIALIZED_NAME_STATUS)
+  private StatusEnum status;
+
   public static final String SERIALIZED_NAME_CUSTOMER_ID = "customerId";
   @SerializedName(SERIALIZED_NAME_CUSTOMER_ID)
   private String customerId;
@@ -104,7 +165,51 @@ public class OrderInfo {
   private String shippingAddressId;
 
 
-  public OrderInfo customerId(String customerId) {
+  public Order id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Unique identifier of order
+   * @return id
+  **/
+  @ApiModelProperty(required = true, value = "Unique identifier of order")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public Order status(StatusEnum status) {
+    
+    this.status = status;
+    return this;
+  }
+
+   /**
+   * Status of Order
+   * @return status
+  **/
+  @ApiModelProperty(required = true, value = "Status of Order")
+
+  public StatusEnum getStatus() {
+    return status;
+  }
+
+
+  public void setStatus(StatusEnum status) {
+    this.status = status;
+  }
+
+
+  public Order customerId(String customerId) {
     
     this.customerId = customerId;
     return this;
@@ -126,13 +231,13 @@ public class OrderInfo {
   }
 
 
-  public OrderInfo productItems(List<ProductItem> productItems) {
+  public Order productItems(List<ProductItem> productItems) {
     
     this.productItems = productItems;
     return this;
   }
 
-  public OrderInfo addProductItemsItem(ProductItem productItemsItem) {
+  public Order addProductItemsItem(ProductItem productItemsItem) {
     this.productItems.add(productItemsItem);
     return this;
   }
@@ -153,7 +258,7 @@ public class OrderInfo {
   }
 
 
-  public OrderInfo totalPrice(Double totalPrice) {
+  public Order totalPrice(Double totalPrice) {
     
     this.totalPrice = totalPrice;
     return this;
@@ -176,7 +281,7 @@ public class OrderInfo {
   }
 
 
-  public OrderInfo currency(CurrencyEnum currency) {
+  public Order currency(CurrencyEnum currency) {
     
     this.currency = currency;
     return this;
@@ -198,7 +303,7 @@ public class OrderInfo {
   }
 
 
-  public OrderInfo paymentCardId(String paymentCardId) {
+  public Order paymentCardId(String paymentCardId) {
     
     this.paymentCardId = paymentCardId;
     return this;
@@ -220,7 +325,7 @@ public class OrderInfo {
   }
 
 
-  public OrderInfo shippingAddressId(String shippingAddressId) {
+  public Order shippingAddressId(String shippingAddressId) {
     
     this.shippingAddressId = shippingAddressId;
     return this;
@@ -250,24 +355,28 @@ public class OrderInfo {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    OrderInfo orderInfo = (OrderInfo) o;
-    return Objects.equals(this.customerId, orderInfo.customerId) &&
-        Objects.equals(this.productItems, orderInfo.productItems) &&
-        Objects.equals(this.totalPrice, orderInfo.totalPrice) &&
-        Objects.equals(this.currency, orderInfo.currency) &&
-        Objects.equals(this.paymentCardId, orderInfo.paymentCardId) &&
-        Objects.equals(this.shippingAddressId, orderInfo.shippingAddressId);
+    Order order = (Order) o;
+    return Objects.equals(this.id, order.id) &&
+        Objects.equals(this.status, order.status) &&
+        Objects.equals(this.customerId, order.customerId) &&
+        Objects.equals(this.productItems, order.productItems) &&
+        Objects.equals(this.totalPrice, order.totalPrice) &&
+        Objects.equals(this.currency, order.currency) &&
+        Objects.equals(this.paymentCardId, order.paymentCardId) &&
+        Objects.equals(this.shippingAddressId, order.shippingAddressId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(customerId, productItems, totalPrice, currency, paymentCardId, shippingAddressId);
+    return Objects.hash(id, status, customerId, productItems, totalPrice, currency, paymentCardId, shippingAddressId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class OrderInfo {\n");
+    sb.append("class Order {\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    customerId: ").append(toIndentedString(customerId)).append("\n");
     sb.append("    productItems: ").append(toIndentedString(productItems)).append("\n");
     sb.append("    totalPrice: ").append(toIndentedString(totalPrice)).append("\n");

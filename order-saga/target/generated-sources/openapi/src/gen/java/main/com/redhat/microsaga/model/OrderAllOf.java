@@ -1,6 +1,6 @@
 /*
- * Payment API
- * Payment API for https://github.com/redhat-france-sa/microservices-saga-blueprint
+ * Order API
+ * Order API for https://github.com/redhat-france-sa/microservices-saga-blueprint
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.payment;
+package com.redhat.microsaga.model;
 
 import java.util.Objects;
 import java.util.Arrays;
@@ -25,24 +25,26 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PaymentAllOf
+ * OrderAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T17:56:06.923067+02:00[Europe/Paris]")
-public class PaymentAllOf {
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T18:48:12.918943+02:00[Europe/Paris]")
+public class OrderAllOf {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
   /**
-   * Status of Payment
+   * Status of Order
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
-    ACCEPTED("ACCEPTED"),
+    CREATED("CREATED"),
     
-    DENIED("DENIED"),
+    VALIDATED("VALIDATED"),
     
-    CANCELED("CANCELED");
+    CANCELED("CANCELED"),
+    
+    FAILED("FAILED");
 
     private String value;
 
@@ -87,17 +89,17 @@ public class PaymentAllOf {
   private StatusEnum status;
 
 
-  public PaymentAllOf id(String id) {
+  public OrderAllOf id(String id) {
     
     this.id = id;
     return this;
   }
 
    /**
-   * Unique identifier of Payment
+   * Unique identifier of order
    * @return id
   **/
-  @ApiModelProperty(required = true, value = "Unique identifier of Payment")
+  @ApiModelProperty(required = true, value = "Unique identifier of order")
 
   public String getId() {
     return id;
@@ -109,17 +111,17 @@ public class PaymentAllOf {
   }
 
 
-  public PaymentAllOf status(StatusEnum status) {
+  public OrderAllOf status(StatusEnum status) {
     
     this.status = status;
     return this;
   }
 
    /**
-   * Status of Payment
+   * Status of Order
    * @return status
   **/
-  @ApiModelProperty(required = true, value = "Status of Payment")
+  @ApiModelProperty(required = true, value = "Status of Order")
 
   public StatusEnum getStatus() {
     return status;
@@ -139,9 +141,9 @@ public class PaymentAllOf {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PaymentAllOf paymentAllOf = (PaymentAllOf) o;
-    return Objects.equals(this.id, paymentAllOf.id) &&
-        Objects.equals(this.status, paymentAllOf.status);
+    OrderAllOf orderAllOf = (OrderAllOf) o;
+    return Objects.equals(this.id, orderAllOf.id) &&
+        Objects.equals(this.status, orderAllOf.status);
   }
 
   @Override
@@ -152,7 +154,7 @@ public class PaymentAllOf {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PaymentAllOf {\n");
+    sb.append("class OrderAllOf {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("}");

@@ -9,17 +9,17 @@ import com.redhat.microsaga.rest.RemoteServices;
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
 @ApplicationScoped
-public class ShippingService {
+public class OrderService {
     @Inject
     @RestClient
     RemoteServices remoteServices;
 
-    //@Fallback(fallbackMethod = "")
-    public String scheduleShipping(Order order) {
-        return remoteServices.scheduleShipping(order);
-    }
-    public String cancelShipping(String shippingId) {
-        return remoteServices.cancelShipping(shippingId);
+       //@Fallback(fallbackMethod = "")
+    public String createOrder(Order order) {
+        return remoteServices.createOrder(order);
     }
 
+    public String failOrder(String orderId) {
+        return remoteServices.failOrder(orderId);
+    }
 }

@@ -1,6 +1,6 @@
 /*
- * Payment API
- * Payment API for https://github.com/redhat-france-sa/microservices-saga-blueprint
+ * Order API
+ * Order API for https://github.com/redhat-france-sa/microservices-saga-blueprint
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -11,35 +11,38 @@
  */
 
 
-package com.redhat.microsaga.model.payment;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.redhat.microsaga.model.payment.PaymentAllOf;
-import com.redhat.microsaga.model.payment.PaymentInfo;
+import com.redhat.microsaga.model.OrderAllOf;
+import com.redhat.microsaga.model.OrderInfo;
+import com.redhat.microsaga.model.ProductItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for Payment
+ * Model tests for Order
  */
-public class PaymentTest {
-    private final Payment model = new Payment();
+public class OrderTest {
+    private final Order model = new Order();
 
     /**
-     * Model tests for Payment
+     * Model tests for Order
      */
     @Test
-    public void testPayment() {
-        // TODO: test Payment
+    public void testOrder() {
+        // TODO: test Order
     }
 
     /**
@@ -59,19 +62,27 @@ public class PaymentTest {
     }
 
     /**
-     * Test the property 'paymentCardId'
+     * Test the property 'customerId'
      */
     @Test
-    public void paymentCardIdTest() {
-        // TODO: test paymentCardId
+    public void customerIdTest() {
+        // TODO: test customerId
     }
 
     /**
-     * Test the property 'amount'
+     * Test the property 'productItems'
      */
     @Test
-    public void amountTest() {
-        // TODO: test amount
+    public void productItemsTest() {
+        // TODO: test productItems
+    }
+
+    /**
+     * Test the property 'totalPrice'
+     */
+    @Test
+    public void totalPriceTest() {
+        // TODO: test totalPrice
     }
 
     /**
@@ -83,11 +94,19 @@ public class PaymentTest {
     }
 
     /**
-     * Test the property 'orderId'
+     * Test the property 'paymentCardId'
      */
     @Test
-    public void orderIdTest() {
-        // TODO: test orderId
+    public void paymentCardIdTest() {
+        // TODO: test paymentCardId
+    }
+
+    /**
+     * Test the property 'shippingAddressId'
+     */
+    @Test
+    public void shippingAddressIdTest() {
+        // TODO: test shippingAddressId
     }
 
 }

@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.order;
+package com.redhat.microsaga.model;
 
 import java.util.Objects;
 import java.util.Arrays;
@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ProductItem
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T17:56:06.202405+02:00[Europe/Paris]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T18:48:12.918943+02:00[Europe/Paris]")
 public class ProductItem {
   public static final String SERIALIZED_NAME_PRODUCT_ID = "productId";
   @SerializedName(SERIALIZED_NAME_PRODUCT_ID)

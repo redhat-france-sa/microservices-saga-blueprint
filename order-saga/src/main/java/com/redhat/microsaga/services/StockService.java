@@ -1,11 +1,9 @@
 package com.redhat.microsaga.services;
 
-import java.util.ArrayList;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import com.redhat.microsaga.model.order.ProductItem;
+import com.redhat.microsaga.model.ProductItem;
 import com.redhat.microsaga.rest.RemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;

@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.payment;
+package com.redhat.microsaga.model;
 
 import java.util.Objects;
 import java.util.Arrays;
@@ -20,74 +20,15 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.redhat.microsaga.model.payment.PaymentAllOf;
-import com.redhat.microsaga.model.payment.PaymentInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Payment
+ * PaymentInfo
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T17:56:06.923067+02:00[Europe/Paris]")
-public class Payment {
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
-
-  /**
-   * Status of Payment
-   */
-  @JsonAdapter(StatusEnum.Adapter.class)
-  public enum StatusEnum {
-    ACCEPTED("ACCEPTED"),
-    
-    DENIED("DENIED"),
-    
-    CANCELED("CANCELED");
-
-    private String value;
-
-    StatusEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StatusEnum fromValue(String value) {
-      for (StatusEnum b : StatusEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<StatusEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StatusEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StatusEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StatusEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private StatusEnum status;
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2021-09-06T18:48:14.357603+02:00[Europe/Paris]")
+public class PaymentInfo {
   public static final String SERIALIZED_NAME_PAYMENT_CARD_ID = "paymentCardId";
   @SerializedName(SERIALIZED_NAME_PAYMENT_CARD_ID)
   private String paymentCardId;
@@ -152,51 +93,7 @@ public class Payment {
   private String orderId;
 
 
-  public Payment id(String id) {
-    
-    this.id = id;
-    return this;
-  }
-
-   /**
-   * Unique identifier of Payment
-   * @return id
-  **/
-  @ApiModelProperty(required = true, value = "Unique identifier of Payment")
-
-  public String getId() {
-    return id;
-  }
-
-
-  public void setId(String id) {
-    this.id = id;
-  }
-
-
-  public Payment status(StatusEnum status) {
-    
-    this.status = status;
-    return this;
-  }
-
-   /**
-   * Status of Payment
-   * @return status
-  **/
-  @ApiModelProperty(required = true, value = "Status of Payment")
-
-  public StatusEnum getStatus() {
-    return status;
-  }
-
-
-  public void setStatus(StatusEnum status) {
-    this.status = status;
-  }
-
-
-  public Payment paymentCardId(String paymentCardId) {
+  public PaymentInfo paymentCardId(String paymentCardId) {
     
     this.paymentCardId = paymentCardId;
     return this;
@@ -218,7 +115,7 @@ public class Payment {
   }
 
 
-  public Payment amount(Double amount) {
+  public PaymentInfo amount(Double amount) {
     
     this.amount = amount;
     return this;
@@ -240,7 +137,7 @@ public class Payment {
   }
 
 
-  public Payment currency(CurrencyEnum currency) {
+  public PaymentInfo currency(CurrencyEnum currency) {
     
     this.currency = currency;
     return this;
@@ -262,7 +159,7 @@ public class Payment {
   }
 
 
-  public Payment orderId(String orderId) {
+  public PaymentInfo orderId(String orderId) {
     
     this.orderId = orderId;
     return this;
@@ -292,26 +189,22 @@ public class Payment {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Payment payment = (Payment) o;
-    return Objects.equals(this.id, payment.id) &&
-        Objects.equals(this.status, payment.status) &&
-        Objects.equals(this.paymentCardId, payment.paymentCardId) &&
-        Objects.equals(this.amount, payment.amount) &&
-        Objects.equals(this.currency, payment.currency) &&
-        Objects.equals(this.orderId, payment.orderId);
+    PaymentInfo paymentInfo = (PaymentInfo) o;
+    return Objects.equals(this.paymentCardId, paymentInfo.paymentCardId) &&
+        Objects.equals(this.amount, paymentInfo.amount) &&
+        Objects.equals(this.currency, paymentInfo.currency) &&
+        Objects.equals(this.orderId, paymentInfo.orderId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, status, paymentCardId, amount, currency, orderId);
+    return Objects.hash(paymentCardId, amount, currency, orderId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Payment {\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
+    sb.append("class PaymentInfo {\n");
     sb.append("    paymentCardId: ").append(toIndentedString(paymentCardId)).append("\n");
     sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");

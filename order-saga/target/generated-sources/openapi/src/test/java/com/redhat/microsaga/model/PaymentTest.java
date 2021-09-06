@@ -11,13 +11,15 @@
  */
 
 
-package com.redhat.microsaga.model.payment;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.redhat.microsaga.model.PaymentAllOf;
+import com.redhat.microsaga.model.PaymentInfo;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -27,17 +29,17 @@ import org.junit.Test;
 
 
 /**
- * Model tests for PaymentAllOf
+ * Model tests for Payment
  */
-public class PaymentAllOfTest {
-    private final PaymentAllOf model = new PaymentAllOf();
+public class PaymentTest {
+    private final Payment model = new Payment();
 
     /**
-     * Model tests for PaymentAllOf
+     * Model tests for Payment
      */
     @Test
-    public void testPaymentAllOf() {
-        // TODO: test PaymentAllOf
+    public void testPayment() {
+        // TODO: test Payment
     }
 
     /**
@@ -54,6 +56,38 @@ public class PaymentAllOfTest {
     @Test
     public void statusTest() {
         // TODO: test status
+    }
+
+    /**
+     * Test the property 'paymentCardId'
+     */
+    @Test
+    public void paymentCardIdTest() {
+        // TODO: test paymentCardId
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
+    }
+
+    /**
+     * Test the property 'orderId'
+     */
+    @Test
+    public void orderIdTest() {
+        // TODO: test orderId
     }
 
 }

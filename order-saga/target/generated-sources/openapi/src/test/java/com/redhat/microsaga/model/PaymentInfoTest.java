@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.payment;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;

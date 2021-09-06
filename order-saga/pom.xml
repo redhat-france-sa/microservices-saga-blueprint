@@ -95,11 +95,11 @@
             <configuration>
               <inputSpec>${project.basedir}/src/main/resources/order-api-v1.0.0.yaml</inputSpec>
               <generatorName>java</generatorName>
-              <modelPackage>com.redhat.microsaga.model.order</modelPackage>
+              <modelPackage>com.redhat.microsaga.model</modelPackage>
               <generateApis>false</generateApis>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
-                <sourceFolder>src/java/main</sourceFolder>
+                <sourceFolder>src/gen/java/main</sourceFolder>
               </configOptions>
             </configuration>
           </execution>
@@ -111,7 +111,7 @@
             <configuration>
               <inputSpec>${project.basedir}/src/main/resources/payment-api-v1.0.0.yaml</inputSpec>
               <generatorName>java</generatorName>
-              <modelPackage>com.redhat.microsaga.model.payment</modelPackage>
+              <modelPackage>com.redhat.microsaga.model</modelPackage>
               <generateApis>false</generateApis>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>

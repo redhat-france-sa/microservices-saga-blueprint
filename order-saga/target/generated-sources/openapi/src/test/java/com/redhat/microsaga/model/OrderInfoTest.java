@@ -11,16 +11,14 @@
  */
 
 
-package com.redhat.microsaga.model.order;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.redhat.microsaga.model.order.OrderAllOf;
-import com.redhat.microsaga.model.order.OrderInfo;
-import com.redhat.microsaga.model.order.ProductItem;
+import com.redhat.microsaga.model.ProductItem;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -32,33 +30,17 @@ import org.junit.Test;
 
 
 /**
- * Model tests for Order
+ * Model tests for OrderInfo
  */
-public class OrderTest {
-    private final Order model = new Order();
+public class OrderInfoTest {
+    private final OrderInfo model = new OrderInfo();
 
     /**
-     * Model tests for Order
+     * Model tests for OrderInfo
      */
     @Test
-    public void testOrder() {
-        // TODO: test Order
-    }
-
-    /**
-     * Test the property 'id'
-     */
-    @Test
-    public void idTest() {
-        // TODO: test id
-    }
-
-    /**
-     * Test the property 'status'
-     */
-    @Test
-    public void statusTest() {
-        // TODO: test status
+    public void testOrderInfo() {
+        // TODO: test OrderInfo
     }
 
     /**

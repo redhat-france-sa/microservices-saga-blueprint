@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.order;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -27,41 +27,33 @@ import org.junit.Test;
 
 
 /**
- * Model tests for ProductItem
+ * Model tests for OrderAllOf
  */
-public class ProductItemTest {
-    private final ProductItem model = new ProductItem();
+public class OrderAllOfTest {
+    private final OrderAllOf model = new OrderAllOf();
 
     /**
-     * Model tests for ProductItem
+     * Model tests for OrderAllOf
      */
     @Test
-    public void testProductItem() {
-        // TODO: test ProductItem
+    public void testOrderAllOf() {
+        // TODO: test OrderAllOf
     }
 
     /**
-     * Test the property 'productId'
+     * Test the property 'id'
      */
     @Test
-    public void productIdTest() {
-        // TODO: test productId
+    public void idTest() {
+        // TODO: test id
     }
 
     /**
-     * Test the property 'quantity'
+     * Test the property 'status'
      */
     @Test
-    public void quantityTest() {
-        // TODO: test quantity
-    }
-
-    /**
-     * Test the property 'price'
-     */
-    @Test
-    public void priceTest() {
-        // TODO: test price
+    public void statusTest() {
+        // TODO: test status
     }
 
 }

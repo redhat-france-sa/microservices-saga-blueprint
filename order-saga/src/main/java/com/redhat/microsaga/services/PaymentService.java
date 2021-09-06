@@ -3,8 +3,8 @@ package com.redhat.microsaga.services;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
-import com.redhat.microsaga.model.payment.Payment;
-import com.redhat.microsaga.model.payment.PaymentInfo;
+import com.redhat.microsaga.model.Payment;
+import com.redhat.microsaga.model.PaymentInfo;
 import com.redhat.microsaga.rest.RemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -20,8 +20,8 @@ public class PaymentService {
         return remoteServices.payment(paymentInfo);
     }
 
-    public String cancelPayment(Payment payment) {
-        return remoteServices.cancelPayment(payment);
+    public String cancelPayment(String paymentId) {
+        return remoteServices.cancelPayment(paymentId);
     }
     
     

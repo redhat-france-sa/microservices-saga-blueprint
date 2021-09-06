@@ -1,6 +1,6 @@
 /*
- * Order API
- * Order API for https://github.com/redhat-france-sa/microservices-saga-blueprint
+ * Payment API
+ * Payment API for https://github.com/redhat-france-sa/microservices-saga-blueprint
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -11,7 +11,7 @@
  */
 
 
-package com.redhat.microsaga.model.order;
+package com.redhat.microsaga.model;
 
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -27,17 +27,17 @@ import org.junit.Test;
 
 
 /**
- * Model tests for OrderAllOf
+ * Model tests for PaymentAllOf
  */
-public class OrderAllOfTest {
-    private final OrderAllOf model = new OrderAllOf();
+public class PaymentAllOfTest {
+    private final PaymentAllOf model = new PaymentAllOf();
 
     /**
-     * Model tests for OrderAllOf
+     * Model tests for PaymentAllOf
      */
     @Test
-    public void testOrderAllOf() {
-        // TODO: test OrderAllOf
+    public void testPaymentAllOf() {
+        // TODO: test PaymentAllOf
     }
 
     /**
