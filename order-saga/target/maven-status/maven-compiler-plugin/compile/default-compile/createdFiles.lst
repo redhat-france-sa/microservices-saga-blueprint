@@ -1,0 +1,4 @@
+com/redhat/microsaga/services/StockService.class
+com/redhat/microsaga/services/PaymentService.class
+com/redhat/microsaga/rest/RemoteServices.class
+com/redhat/microsaga/services/ShippingService.class
