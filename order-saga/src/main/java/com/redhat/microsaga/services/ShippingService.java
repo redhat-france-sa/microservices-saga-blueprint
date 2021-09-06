@@ -3,6 +3,7 @@ package com.redhat.microsaga.services;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import com.redhat.microsaga.model.order.Order;
 import com.redhat.microsaga.rest.RemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -14,7 +15,7 @@ public class ShippingService {
     RemoteServices remoteServices;
 
     //@Fallback(fallbackMethod = "")
-    public String scheduleShipping(String order) {
+    public String scheduleShipping(Order order) {
         return remoteServices.scheduleShipping(order);
     }
     public String cancelShipping(String shippingId) {

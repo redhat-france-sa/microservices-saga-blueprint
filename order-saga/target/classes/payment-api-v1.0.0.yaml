@@ -1,0 +1,137 @@
+---
+openapi: 3.0.2
+info:
+  title: Payment API
+  version: 1.0.0
+  description: Payment API for https://github.com/redhat-france-sa/microservices-saga-blueprint
+paths:
+  /payment/{id}:
+    get:
+      parameters:
+      - name: id
+        description: Payment unique identifier
+        schema:
+          type: string
+        in: path
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: Get requested payment
+      operationId: GetPaymentById
+      summary: Get Payment with id
+    parameters:
+    - name: id
+      description: Payment unique identifier
+      schema:
+        type: string
+      in: path
+      required: true
+  /payment/{id}/cancel:
+    put:
+      parameters:
+      - name: id
+        description: Payment unique identifier
+        schema:
+          type: string
+        in: path
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+          description: The payment with CANCELED status
+      operationId: MarkPaymentCancel
+      summary: Mark payment as canceled
+    parameters:
+    - name: id
+      description: Payment unique identifier
+      schema:
+        type: string
+      in: path
+      required: true
+  /payment:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PaymentInfo'
+            examples:
+              apple-watch:
+                value:
+                  paymentCardId: payment-mourad-00
+                  amount: 399.9
+                  currency: EUR
+                  orderId: azertyuiop
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Payment'
+              examples:
+                apple-watch:
+                  value:
+                    id: "{{guid()}}"
+                    status: ACCEPTED
+                    paymentCardId: payment-mourad-00
+                    amount: 399.9
+                    currency: EUR
+                    orderId: azertyuiop
+          description: The created Payment
+      operationId: CreatePayment
+      summary: Create Payment
+components:
+  schemas:
+    PaymentInfo:
+      description: ""
+      required:
+      - paymentCardId
+      - amount
+      - currency
+      - orderId
+      type: object
+      properties:
+        paymentCardId:
+          description: Card identifier for payment
+          type: string
+        amount:
+          format: double
+          description: The amount to be charged
+          type: number
+        currency:
+          description: ""
+          enum:
+          - EUR
+          - USD
+          type: string
+        orderId:
+          description: ""
+          type: string
+    Payment:
+      description: ""
+      type: object
+      allOf:
+      - required:
+        - id
+        - status
+        type: object
+        properties:
+          id:
+            description: Unique identifier of Payment
+            type: string
+          status:
+            description: Status of Payment
+            enum:
+            - ACCEPTED
+            - DENIED
+            - CANCELED
+            type: string
+      - $ref: '#/components/schemas/PaymentInfo'

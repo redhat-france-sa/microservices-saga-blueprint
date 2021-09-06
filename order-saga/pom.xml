@@ -82,19 +82,36 @@
 
   <build>
     <plugins>
-      <!--plugin>
+      <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
         <version>5.1.0</version>
         <executions>
           <execution>
+            <id>order-gen</id>
             <goals>
               <goal>generate</goal>
             </goals>
             <configuration>
-              <inputSpec>${project.basedir}/src/main/resources/order-api.yaml</inputSpec>
+              <inputSpec>${project.basedir}/src/main/resources/order-api-v1.0.0.yaml</inputSpec>
               <generatorName>java</generatorName>
-              <modelPackage>com.redhat.microsaga.order</modelPackage>
+              <modelPackage>com.redhat.microsaga.model.order</modelPackage>
+              <generateApis>false</generateApis>
+              <generateSupportingFiles>false</generateSupportingFiles>
+              <configOptions>
+                <sourceFolder>src/java/main</sourceFolder>
+              </configOptions>
+            </configuration>
+          </execution>
+          <execution>
+            <id>payment-gen</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/payment-api-v1.0.0.yaml</inputSpec>
+              <generatorName>java</generatorName>
+              <modelPackage>com.redhat.microsaga.model.payment</modelPackage>
               <generateApis>false</generateApis>
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
@@ -102,8 +119,24 @@
               </configOptions>
             </configuration>
           </execution>
+          <!--execution>
+            <id>stock-gen</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/stock-api-v1.0.0.yaml</inputSpec>
+              <generatorName>java</generatorName>
+              <modelPackage>com.redhat.microsaga.model.stock</modelPackage>
+              <generateApis>false</generateApis>
+              <generateSupportingFiles>false</generateSupportingFiles>
+              <configOptions>
+                <sourceFolder>src/gen/java/main</sourceFolder>
+              </configOptions>
+            </configuration>
+          </execution-->
         </executions>
-      </plugin-->
+      </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>

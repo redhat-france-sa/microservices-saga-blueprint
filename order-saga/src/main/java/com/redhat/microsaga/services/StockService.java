@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
+import com.redhat.microsaga.model.order.ProductItem;
 import com.redhat.microsaga.rest.RemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
@@ -16,11 +17,11 @@ public class StockService {
     RemoteServices remoteServices;
 
     //@Fallback(fallbackMethod = "")
-    public String reserveStock(ArrayList productItems) {
-        return remoteServices.reserveStock(productItems);
+    public String reserveStock(ProductItem productItem) {
+        return remoteServices.reserveStock(productItem);
     }
-    public String releaseStock(ArrayList productItems) {
-        return remoteServices.releaseStock(productItems);
+    public String releaseStock(ProductItem productItem) {
+        return remoteServices.releaseStock(productItem);
     }
     
 

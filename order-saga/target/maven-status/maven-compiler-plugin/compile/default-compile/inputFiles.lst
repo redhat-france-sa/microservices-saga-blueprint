@@ -1,4 +1,11 @@
 /Users/mouachani/projects/microservices-saga-blueprint/order-saga/src/main/java/com/redhat/microsaga/services/PaymentService.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/gen/java/main/com/redhat/microsaga/model/payment/PaymentAllOf.java
 /Users/mouachani/projects/microservices-saga-blueprint/order-saga/src/main/java/com/redhat/microsaga/rest/RemoteServices.java
 /Users/mouachani/projects/microservices-saga-blueprint/order-saga/src/main/java/com/redhat/microsaga/services/StockService.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/gen/java/main/com/redhat/microsaga/model/payment/PaymentInfo.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/java/main/com/redhat/microsaga/model/order/OrderInfo.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/java/main/com/redhat/microsaga/model/order/Order.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/java/main/com/redhat/microsaga/model/order/OrderAllOf.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/gen/java/main/com/redhat/microsaga/model/payment/Payment.java
 /Users/mouachani/projects/microservices-saga-blueprint/order-saga/src/main/java/com/redhat/microsaga/services/ShippingService.java
+/Users/mouachani/projects/microservices-saga-blueprint/order-saga/target/generated-sources/openapi/src/java/main/com/redhat/microsaga/model/order/ProductItem.java
