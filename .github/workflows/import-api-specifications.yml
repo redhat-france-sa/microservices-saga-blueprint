@@ -1,0 +1,32 @@
+name: import-api-specifications.yml
+on: [push]
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    environment: Development
+    steps:
+      # Checkout repository content
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Filter artifacts
+        uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            apiSpecifications:
+              - 'api-specifications/**'
+
+      - name: Microcks Import GitHub action
+        if: steps.changes.outputs.apiSpecifications == 'true'
+        # You may pin to the exact commit or the version.
+        uses: microcks/import-github-action@main
+        with:
+          # <specificationFile1[:primary],specificationFile2[:primary]>` : Comma separated list of API specs to import with flag telling if it's a primary artifact. Example: 'specs/my-openapi.yaml:true,specs/my-postmancollection.json:false'
+          specificationFiles: 'api-specifications/order-api-v1.0.0.yaml:true'
+          # Microcks instance API endpoint
+          microcksURL: ${{ secrets.MICROCKS_URL }}
+          # Keycloak Realm Service Account ClientId
+          keycloakClientId: ${{ secrets.MICROCKS_SERVICE_ACCOUNT }}
+          # Keycloak Realm Service Account ClientSecret
+          keycloakClientSecret: ${{ secrets.MICROCKS_SERVICE_ACCOUNT_CREDENTIALS }}
