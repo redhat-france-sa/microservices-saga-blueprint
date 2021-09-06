@@ -23,7 +23,7 @@ jobs:
         uses: microcks/import-github-action@main
         with:
           # <specificationFile1[:primary],specificationFile2[:primary]>` : Comma separated list of API specs to import with flag telling if it's a primary artifact. Example: 'specs/my-openapi.yaml:true,specs/my-postmancollection.json:false'
-          specificationFiles: 'api-specifications/order-api-v1.0.0.yaml:true'
+          specificationFiles: 'api-specifications/order-api-v1.0.0.yaml:true,api-specifications/payment-api-v1.0.0.yaml:true,api-specifications/stock-api-v1.0.0.yaml:true'
           # Microcks instance API endpoint
           microcksURL: ${{ secrets.MICROCKS_URL }}
           # Keycloak Realm Service Account ClientId
