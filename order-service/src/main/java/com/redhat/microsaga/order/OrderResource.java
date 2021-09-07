@@ -8,12 +8,19 @@ import org.jboss.logging.Logger;
 
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 @Path("/api/order")
+/**
+ * JAX-RS resource exposing Order API.
+ * @author laurent
+ */
 public class OrderResource {
 
    /** Get a JBoss logging logger. */
@@ -24,6 +31,15 @@ public class OrderResource {
 
    @Inject
    OrderMapper orderMapper;
+
+   @GET
+   @Path("/{id}")
+   @Produces(MediaType.APPLICATION_JSON)
+   public Response getOrder(@PathParam("id") String id) {
+      logger.infof("Get order with id %s", id);
+      Order order = orderService.getOrder(id);
+      return Response.ok(order).build();
+   }
 
    @POST
    @Consumes(MediaType.APPLICATION_JSON)

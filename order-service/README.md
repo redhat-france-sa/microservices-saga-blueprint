@@ -48,3 +48,12 @@ If you want to learn more about building native executables, please consult http
 ## Related Guides
 
 - RESTEasy JAX-RS ([guide](https://quarkus.io/guides/rest-json)): REST endpoint framework implementing JAX-RS and more
+
+
+## Building and pushing container image
+
+With Jib:
+
+```shell
+./mvnw package -Dquarkus.container-image.build=true -Dquarkus.container-image.image=quay.io/lbroudoux/microsaga-order-service:1.0.0-SNAPSHOT -Dquarkus.container-image.push=true
+```

@@ -80,8 +80,6 @@
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-arc</artifactId>
     </dependency>
-
-    <!-- Utilities -->
     <dependency>
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
@@ -93,8 +91,6 @@
       <version>1.4.2.Final</version>
       <scope>provided</scope>
     </dependency>
-
-    <!-- Required to compile sources from openapi-generator -->
     <dependency>
       <groupId>io.swagger</groupId>
       <artifactId>swagger-annotations</artifactId>
@@ -105,7 +101,10 @@
       <artifactId>jsr305</artifactId>
       <version>3.0.2</version>
     </dependency>
-
+    <dependency>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-container-image-jib</artifactId>
+    </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
       <artifactId>quarkus-junit5</artifactId>
@@ -132,6 +131,7 @@
               <generateSupportingFiles>false</generateSupportingFiles>
               <configOptions>
                 <sourceFolder>src/gen/main/java</sourceFolder>
+                <library>resteasy</library>
                 <serializationLibrary>jackson</serializationLibrary>
               </configOptions>
             </configuration>

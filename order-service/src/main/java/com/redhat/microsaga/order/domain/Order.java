@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import java.util.List;
 
 /**
+ * Order domain object.
  * @author laurent
  */
 @Entity
