@@ -38,6 +38,13 @@
   </head>
   
   <body>
+    <script>
+        function getSwaggerURL() {
+            if(window.location.href.includes("localhost"))
+                return "http://localhost:8080/q/swagger-ui/";
+            else return  window.location.href+"/q/swagger-ui/";
+        }
+        </script>
       <section class="nav-content" style="padding: 0 13rem; height: 78px;">
           <div class="row gx-5" style="padding-top: 8px;">
               <div class="col-lg-6" style="margin-top: 8px;">
@@ -49,7 +56,7 @@
                   <nav style="float: right; padding-top: 10px;">
                       <ul style="list-style: none;">
                           <li>
-                              <a href="http://localhost:8080/q/swagger-ui/"
+                              <a href="javascript:getSwaggerURL();"
                                  style="text-transform: uppercase;
                                   color: #fff;
                                   line-height: 2.5;
