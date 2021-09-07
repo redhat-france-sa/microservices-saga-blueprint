@@ -1,5 +1,7 @@
 package com.redhat.microsaga.services;
 
+import java.util.ArrayList;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
@@ -15,11 +17,11 @@ public class StockService {
     RemoteServices remoteServices;
 
     //@Fallback(fallbackMethod = "")
-    public String reserveStock(ProductItem productItem) {
-        return remoteServices.reserveStock(productItem);
+    public String reserveStock(ArrayList<ProductItem> productItems) {
+        return remoteServices.reserveStock(productItems);
     }
-    public String releaseStock(ProductItem productItem) {
-        return remoteServices.releaseStock(productItem);
+    public String releaseStock(ArrayList<ProductItem> productItems) {
+        return remoteServices.releaseStock(productItems);
     }
     
 

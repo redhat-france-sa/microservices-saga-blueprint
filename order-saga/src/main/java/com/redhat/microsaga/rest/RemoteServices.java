@@ -1,6 +1,8 @@
 package com.redhat.microsaga.rest;
 
 
+import java.util.ArrayList;
+
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -20,12 +22,12 @@ public interface RemoteServices {
     @PUT
     @Path("/stock/{id}/reserve")
     @Produces("application/json")
-    String reserveStock(@PathParam("productitem")  ProductItem productItem);
+    String reserveStock(@PathParam("productitem") ArrayList<ProductItem> productItems);
 
     @PUT
     @Path("/stock/{id}/release")
     @Produces("application/json")
-    String releaseStock(@PathParam("productitem") ProductItem productItem);
+    String releaseStock(@PathParam("productitem") ArrayList<ProductItem> productItems);
 
     @POST
     @Path("/payment")
