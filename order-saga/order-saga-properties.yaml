@@ -1,0 +1,39 @@
+apiVersion: v1
+data:
+  kafka.bootstrap.servers: my-cluster-kafka-bootstrap.microsaga-infra.svc:9092
+  quarkus.infinispan-client.server-list: kogito-infinispan:11222
+  quarkus.infinispan-client.trust-store: /home/kogito/certs/infinispan/truststore.p12
+  quarkus.infinispan-client.trust-store-password: changeit
+  quarkus.infinispan-client.trust-store-type: PKCS12
+  quarkus.infinispan-client.use-auth: "true"
+  application.properties : |-
+    com.redhat.microsaga.services.PaymentService/mp-rest/url='http://companies-svc-companies-svc.apps.ocp4.ouachani.org'
+    com.redhat.microsaga.services.PaymentService/mp-rest/scope=javax.enterprise.context.ApplicationScoped
+    com.redhat.microsaga.services.StockService/mp-rest/url='http://companies-svc-companies-svc.apps.ocp4.ouachani.org'
+    com.redhat.microsaga.services.StockService/mp-rest/scope=javax.enterprise.context.ApplicationScoped
+    com.redhat.microsaga.services.ShippingService/mp-rest/url='http://companies-svc-companies-svc.apps.ocp4.ouachani.org'
+    com.redhat.microsaga.services.ShippingService/mp-rest/scope=javax.enterprise.context.ApplicationScoped
+    mp.messaging.incoming.kogito_incoming_stream.connector=smallrye-kafka
+    mp.messaging.incoming.kogito_incoming_stream.topic=ordercreate
+    mp.messaging.incoming.kogito_incoming_stream.value.deserializer=org.apache.kafka.common.serialization.StringDeserializer
+    mp.messaging.outgoing.kogito_outgoing_stream.connector=smallrye-kafka
+    mp.messaging.outgoing.kogito_outgoing_stream.topic=ordersuccess
+    mp.messaging.outgoing.kogito_outgoing_stream.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+    mp.messaging.outgoing.kogito-processinstances-events.connector=smallrye-kafka
+    mp.messaging.outgoing.kogito-processinstances-events.topic=kogito-processinstances-events
+    mp.messaging.outgoing.kogito-processinstances-events.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+    mp.messaging.outgoing.kogito-usertaskinstances-events.connector=smallrye-kafka
+    mp.messaging.outgoing.kogito-usertaskinstances-events.topic=kogito-usertaskinstances-events
+    mp.messaging.outgoing.kogito-usertaskinstances-events.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+    mp.messaging.outgoing.kogito-variables-events.connector=smallrye-kafka
+    mp.messaging.outgoing.kogito-variables-events.topic=kogito-variables-events
+    mp.messaging.outgoing.kogito-variables-events.value.serializer=org.apache.kafka.common.serialization.StringSerializer
+kind: ConfigMap
+metadata:
+  labels:
+    app: order-saga
+  name: order-saga-properties
+  namespace: microsaga-infra
