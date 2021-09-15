@@ -1,0 +1,10 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnect
+metadata:
+  name: order-database-connect
+  annotations:
+    strimzi.io/use-connector-resources: "true"
+spec:
+  bootstrapServers: 'my-cluster-kafka-bootstrap.microsaga-infra.svc.cluster.local:9092'
+  image: quay.io/lbroudoux/debezium-connect:1.6.2.Final
+  replicas: 1

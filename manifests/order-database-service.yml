@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: order-database
+  labels:
+    app: order-database
+    app.kubernetes.io/component: order-database
+    app.kubernetes.io/instance: order-database
+    app.kubernetes.io/part-of: order-service-app
+spec:
+  ports:
+    - name: 5432-tcp
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: order-database
+    deploymentconfig: order-database
+  type: ClusterIP
+  sessionAffinity: None

@@ -1,0 +1,31 @@
+apiVersion: kafka.strimzi.io/v1beta2
+kind: KafkaConnector
+metadata:
+  name: order-database-connector
+  labels:
+    strimzi.io/cluster: order-database-connect
+spec:
+  class: io.debezium.connector.postgresql.PostgresConnector
+  tasksMax: 1
+  config:
+    database.hostname: order-database
+    database.port: 5432
+    database.user: postgres
+    database.password: postgrespw
+    database.dbname: ordersdb
+    database.server.name: dbserver1
+    schema.include.list: public
+    plugin.name: pgoutput
+    table.include.list: public.outboxevent
+    tombstones.on.delete: false
+    transforms: outbox,expand
+    transforms.outbox.type: io.debezium.transforms.outbox.EventRouter
+    transforms.outbox.route.topic.replacement: ${routedByValue}.events
+    transforms.outbox.table.field.payload: payload
+    transforms.outbox.table.field.event.timestamp: timestamp
+    transforms.outbox.table.fields.additional.placement: type:header:eventType
+    # Need a custom SMT to transform escaped JSON string into real JSON.
+    transforms.expand.type: com.redhat.outbox.kafka.ExpandJSONPayload$Value
+    # Value converter allows getting rid of the {schema:{}, payload:{}} structure from Kafka ConnectRecord.
+    value.converter: org.apache.kafka.connect.json.JsonConverter
+    value.converter.schemas.enable: false
