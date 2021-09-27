@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.redhat.microsaga.model.Order;
-import com.redhat.microsaga.rest.RemoteServices;
+import com.redhat.microsaga.rest.ShippingRemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -12,14 +12,14 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 public class ShippingService {
     @Inject
     @RestClient
-    RemoteServices remoteServices;
+    ShippingRemoteServices shippingRemoteServices;
 
     //@Fallback(fallbackMethod = "")
     public String scheduleShipping(Order order) {
-        return remoteServices.scheduleShipping(order);
+        return shippingRemoteServices.scheduleShipping(order);
     }
     public String cancelShipping(String shippingId) {
-        return remoteServices.cancelShipping(shippingId);
+        return shippingRemoteServices.cancelShipping(shippingId);
     }
 
 }

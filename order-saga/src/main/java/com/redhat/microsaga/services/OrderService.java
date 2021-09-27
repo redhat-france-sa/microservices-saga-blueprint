@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.redhat.microsaga.model.Order;
-import com.redhat.microsaga.rest.RemoteServices;
+import com.redhat.microsaga.rest.OrderRemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -12,14 +12,14 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 public class OrderService {
     @Inject
     @RestClient
-    RemoteServices remoteServices;
+    OrderRemoteServices orderRemoteServices;
 
        //@Fallback(fallbackMethod = "")
     public String createOrder(Order order) {
-        return remoteServices.createOrder(order);
+        return orderRemoteServices.createOrder(order);
     }
 
     public String failOrder(String orderId) {
-        return remoteServices.failOrder(orderId);
+        return orderRemoteServices.failOrder(orderId);
     }
 }

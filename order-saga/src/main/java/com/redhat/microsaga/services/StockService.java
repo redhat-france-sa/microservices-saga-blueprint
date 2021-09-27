@@ -6,7 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 
 import com.redhat.microsaga.model.ProductItem;
-import com.redhat.microsaga.rest.RemoteServices;
+import com.redhat.microsaga.rest.StockRemoteServices;
 
 import org.eclipse.microprofile.rest.client.inject.RestClient;
 
@@ -14,15 +14,13 @@ import org.eclipse.microprofile.rest.client.inject.RestClient;
 public class StockService {
     @Inject
     @RestClient
-    RemoteServices remoteServices;
+    StockRemoteServices stockRemoteServices;
 
     //@Fallback(fallbackMethod = "")
-    public String reserveStock(ArrayList<ProductItem> productItems) {
-        return remoteServices.reserveStock(productItems);
+    public String reserveStock(String id, ArrayList<ProductItem> productItems) {
+        return stockRemoteServices.reserveStock(id, productItems);
     }
-    public String releaseStock(ArrayList<ProductItem> productItems) {
-        return remoteServices.releaseStock(productItems);
+    public String releaseStock(String id, ArrayList<ProductItem> productItems) {
+        return stockRemoteServices.releaseStock(id, productItems);
     }
-    
-
 }

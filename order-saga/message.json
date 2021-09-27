@@ -1,0 +1,1 @@
+{"data":{"id": "12345","status": "CREATED","customerId":"12345","productItems":[{"productId":"123","quantity":1,"price":10.0}],"totalPrice":10,"currency":"EUR","paymentCardId":"1234","shippingAddressId":"1234"},"specversion": "1.0","type":"order","source":"localhost","id":"12345","datacontenttype":"application/json"}
