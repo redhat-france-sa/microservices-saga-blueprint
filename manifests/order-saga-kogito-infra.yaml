@@ -1,0 +1,19 @@
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoInfra
+metadata:
+  name: saga-infinispan-infra
+spec:
+  resource:
+    apiVersion: infinispan.org/v1
+    kind: Infinispan
+    name: saga-infinispan
+---
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoInfra
+metadata:
+  name: saga-kafka-infra
+spec:
+  resource:
+    apiVersion: kafka.strimzi.io/v1beta2
+    kind: Kafka
+    name: saga-cluster

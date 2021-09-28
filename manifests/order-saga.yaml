@@ -1,0 +1,26 @@
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoBuild
+metadata:
+  name: order-saga
+spec:
+  type: RemoteSource
+  #env:
+  # env can be used to set variables during build
+  #- name: MY_CUSTOM_ENV
+  #  value: "my value"
+  gitSource:
+    contextDir: order-saga
+    uri: 'https://github.com/mouachan/saga-orchestration'
+  # set your maven nexus repository
+  #mavenMirrorURL: http://nexus3-nexus.apps-crc.testing/repository/maven-public/
+---
+apiVersion: app.kiegroup.org/v1beta1
+kind: KogitoRuntime
+metadata:
+  name: order-saga
+spec:
+  propertiesConfigMap: order-saga-cm
+  infra:
+    - saga-infinispan-infra
+    - saga-kafka-infra
+  runtime: quarkus
