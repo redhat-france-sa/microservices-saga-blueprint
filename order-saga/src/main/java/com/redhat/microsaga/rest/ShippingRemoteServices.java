@@ -16,12 +16,12 @@ import org.eclipse.microprofile.rest.client.inject.RegisterRestClient;
 @RegisterRestClient
 public interface ShippingRemoteServices {
     @POST
-    @Path("/shipping")
+    @Path("/shipping/{id}/schedule")
     @Produces("application/json")
-    String scheduleShipping(@PathParam("order") Order order);
+    String scheduleShipping(@PathParam("id") String id, String schippingId);
 
     @DELETE
-    @Path("/shipping/{id}")
+    @Path("/shipping/{id}/cancel")
     @Produces("application/json")
-    String cancelShipping(@PathParam("schippingId") String schippingId);
+    String cancelShipping(@PathParam("id") String id, String schippingId);
 }
