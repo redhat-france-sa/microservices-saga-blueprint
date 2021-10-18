@@ -1,6 +1,0 @@
-com/redhat/outbox/kafka/ExpandJSONPayload.class
-com/redhat/outbox/kafka/DataConverter$1.class
-com/redhat/outbox/kafka/SchemaParser.class
-com/redhat/outbox/kafka/ExpandJSONPayload$Value.class
-com/redhat/outbox/kafka/DataConverter.class
-com/redhat/outbox/kafka/SchemaParser$1.class
