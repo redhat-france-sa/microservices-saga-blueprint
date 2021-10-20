@@ -1,4 +1,4 @@
-# order-service Project
+# stock-service Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -61,5 +61,18 @@ With Jib:
 ## Testing locally
 
 ```shell
+$ curl http://localhost:8080/api/stock/2/check\?quantity\=4
+true
 
+$ curl -X POST http://localhost:8080/api/stock/reserve -H 'Content-type: application/json' -d '[{"productId":1, "quantity":2}, {"productId":2, "quantity":2}]'
+[{"productId":"1","reserved":true},{"productId":"2","reserved":true}]
+
+$ curl http://localhost:8080/api/stock/2/check\?quantity\=4
+false
+
+$ curl -X POST http://localhost:8080/api/stock/release -H 'Content-type: application/json' -d '[{"productId":1, "quantity":2}, {"productId":2, "quantity":2}]'
+[{"productId":"1","released":true},{"productId":"2","released":true}]
+
+$ curl http://localhost:8080/api/stock/2/check\?quantity\=4
+true
 ```

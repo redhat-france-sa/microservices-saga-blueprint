@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: stock-database
+  labels:
+    app: stock-database
+    app.kubernetes.io/component: stock-database
+    app.kubernetes.io/instance: stock-database
+    app.kubernetes.io/part-of: stock-service-app
+spec:
+  ports:
+    - name: 5432-tcp
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: stock-database
+    deploymentconfig: stock-database
+  type: ClusterIP
+  sessionAffinity: None

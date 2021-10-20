@@ -1,4 +1,4 @@
-# order-service Project
+# payment-service Project
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
 
@@ -31,12 +31,12 @@ The application is now runnable using `java -jar target/quarkus-app/quarkus-run.
 
 ## Creating a native executable
 
-You can create a native executable using:
+You can create a native executable using: 
 ```shell script
 ./mvnw package -Pnative
 ```
 
-Or, if you don't have GraalVM installed, you can run the native executable build in a container using:
+Or, if you don't have GraalVM installed, you can run the native executable build in a container using: 
 ```shell script
 ./mvnw package -Pnative -Dquarkus.native.container-build=true
 ```
@@ -61,5 +61,12 @@ With Jib:
 ## Testing locally
 
 ```shell
+$ curl -X POST http://localhost:8080/api/payment -H 'Content-type: application/json' -d '{"orderId":"123456", "amount":10.0, "currency":"EUR", "paymentCardId":"5138"}'
+{"id":"fd7b9654-5bf4-4a29-8b76-4d36267bc162","status":"ACCEPTED","paymentCardId":"5138","amount":10.0,"currency":"EUR","orderId":"123456"}
 
+$ curl -X GET http://localhost:8080/api/payment/fd7b9654-5bf4-4a29-8b76-4d36267bc162
+{"id":"fd7b9654-5bf4-4a29-8b76-4d36267bc162","status":"ACCEPTED","paymentCardId":"5138","amount":10.0,"currency":"EUR","orderId":"123456"}
+
+curl -X PUT http://localhost:8080/api/payment/fd7b9654-5bf4-4a29-8b76-4d36267bc162/cancel
+{"id":"fd7b9654-5bf4-4a29-8b76-4d36267bc162","status":"CANCELED","paymentCardId":"5138","amount":10.0,"currency":"EUR","orderId":"123456"
 ```

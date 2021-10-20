@@ -1,0 +1,20 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: payment-database
+  labels:
+    app: payment-database
+    app.kubernetes.io/component: payment-database
+    app.kubernetes.io/instance: payment-database
+    app.kubernetes.io/part-of: payment-service-app
+spec:
+  ports:
+    - name: 5432-tcp
+      protocol: TCP
+      port: 5432
+      targetPort: 5432
+  selector:
+    app: payment-database
+    deploymentconfig: payment-database
+  type: ClusterIP
+  sessionAffinity: None
