@@ -16,6 +16,10 @@ public abstract class PaymentEvent implements ExportedEvent<String, JsonNode> {
 
    private static final String TYPE = "Payment";
 
+   protected static final String CE_VERSION = "1.0";
+   protected static final String CE_SOURCE = "/payment-service";
+   protected static final String CE_DATACONTENT = "application/json";
+
    protected final String paymentId;
    protected final JsonNode jsonNode;
    protected final Instant timestamp;

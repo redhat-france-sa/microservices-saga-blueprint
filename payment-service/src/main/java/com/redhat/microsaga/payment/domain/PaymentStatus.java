@@ -5,6 +5,7 @@ package com.redhat.microsaga.payment.domain;
  * @author laurent
  */
 public enum PaymentStatus {
+   CREATED,
    ACCEPTED,
    DENIED,
    CANCELED
