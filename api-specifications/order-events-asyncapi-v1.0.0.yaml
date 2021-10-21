@@ -1,0 +1,98 @@
+asyncapi: '2.1.0'
+info:
+  title: Order Events
+  version: 1.0.0
+  description: This API allows you to consumer Order related events
+channels:
+  orders-events:
+    subscribe:
+      message:
+        headers:
+          type: object
+          properties:
+            content-type:
+              type: string
+              enum:
+                - 'application/cloudevents+json; charset=UTF-8'
+        payload:
+          $ref: '#/components/schemas/OrderCreated'
+        examples:
+          - name: mourad
+            summary: Mourad OrderCreated event
+            headers:
+              content-type: 'application/cloudevents+json; charset=UTF-8'
+            payload:
+              specversion: 1.0
+              type: OrderCreated
+              source: /order-service
+              datacontenttype: application/json
+              time: "{{now(yyyy-MM-dd'T'HH:mm:SS'Z')}}"
+              id: "{{uuid()}}"
+              kogitoprocrefid: "{{request.body.data/orderId}}"
+              data:
+                id: "{{uuid()}}"
+                status: CREATED
+                customerId: mourad-00
+                productItems:
+                  - productId: apple-watch-06
+                    quantity: 1
+                    price: 399.9
+                totalPrice: 399.9
+                currency: EUR
+                paymentCardId: payment-mourad-00
+                shippingAddressId: address-mourad-00
+components:
+  schemas:
+    OrderCreated:
+      type: object
+      allOf:
+        - $ref: 'https://raw.githubusercontent.com/cloudevents/spec/v1.0.1/spec.json'
+      properties:
+        data:
+          $ref: '#/components/schemas/OrderData'
+    OrderData:
+      type: object
+      properties:
+        id:
+          description: Unique identifier of order
+          type: string
+        status:
+          description: Status of Order
+          enum:
+            - CREATED
+            - VALIDATED
+            - CANCELED
+            - FAILED
+          type: string
+        customerId:
+          type: string
+        productItems:
+          type: array
+          items:
+            $ref: '#/components/schemas/ProductItem'
+        totalPrice:
+          format: double
+          type: number
+        currency:
+          enum:
+            - EUR
+            - USD
+          type: string
+        paymentCardId:
+          type: string
+        shippingAddressId:
+          type: string
+    ProductItem:
+      type: object
+      properties:
+        productId:
+          description: Identifier of product
+          type: string
+        quantity:
+          format: int32
+          description: Quantity of this product
+          type: integer
+        price:
+          format: double
+          description: Price for the quantity of product
+          type: number

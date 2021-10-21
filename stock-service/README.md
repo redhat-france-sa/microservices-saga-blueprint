@@ -55,7 +55,7 @@ If you want to learn more about building native executables, please consult http
 With Jib:
 
 ```shell
-./mvnw package -Dquarkus.container-image.build=true -Dquarkus.container-image.image=quay.io/lbroudoux/microsaga-payment-service:1.0.0-SNAPSHOT -Dquarkus.container-image.push=true
+./mvnw package -Dquarkus.container-image.build=true -Dquarkus.container-image.image=quay.io/lbroudoux/microsaga-stock-service:1.0.0-SNAPSHOT -Dquarkus.container-image.push=true
 ```
 
 ## Testing locally

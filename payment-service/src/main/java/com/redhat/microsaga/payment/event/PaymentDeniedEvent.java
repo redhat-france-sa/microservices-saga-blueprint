@@ -8,18 +8,18 @@ import java.time.Instant;
 import java.util.UUID;
 
 /**
- * Definition of PaymentCreatedEvent managed by Debezium outbox plugin.
+ * Definition of PaymentDeniedEvent managed by Debezium outbox plugin.
  * @author laurent
  */
-public class PaymentCreatedEvent extends PaymentEvent {
+public class PaymentDeniedEvent extends PaymentEvent {
 
-   private static final String EVENT_TYPE = "PaymentCreated";
+   private static final String EVENT_TYPE = "PaymentDenied";
 
-   private PaymentCreatedEvent(String id, JsonNode payment) {
+   private PaymentDeniedEvent(String id, JsonNode payment) {
       super(id, payment);
    }
 
-   public static PaymentCreatedEvent of(Payment payment) {
+   public static PaymentDeniedEvent of(Payment payment) {
       ObjectNode asJson = mapper.createObjectNode()
             .put("specversion", CE_VERSION)
             .put("type", EVENT_TYPE)
@@ -30,7 +30,7 @@ public class PaymentCreatedEvent extends PaymentEvent {
             .put("kogitoprocrefid", payment.orderId)
             .set("data", mapper.convertValue(payment, JsonNode.class));
 
-      return new PaymentCreatedEvent(payment.id, asJson);
+      return new PaymentDeniedEvent(payment.id, asJson);
    }
 
    @Override

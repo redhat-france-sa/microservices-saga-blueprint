@@ -130,6 +130,7 @@ components:
           status:
             description: Status of Payment
             enum:
+            - CREATED
             - ACCEPTED
             - DENIED
             - CANCELED
