@@ -1,0 +1,110 @@
+syntax = "proto2"; 
+package com.redhat.microsaga.ordersprocess; 
+import "kogito-index.proto";
+import "kogito-types.proto";
+option kogito_model = "Ordersprocess";
+option kogito_id = "ordersprocess";
+
+/* @Indexed */ 
+message List { 
+	option java_package = "java.util";
+}
+/* @Indexed */ 
+message Order { 
+	option java_package = "com.redhat.microsaga.model";
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string currency = 1; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string customerId = 2; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string id = 3; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string paymentCardId = 4; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	repeated ProductItem productItems = 5; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string shippingAddressId = 6; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string status = 7; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional double totalPrice = 8; 
+}
+/* @Indexed */ 
+message Ordersprocess { 
+	option java_package = "com.redhat.microsaga";
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string event = 1; 
+	/* @Field(index = Index.YES, store = Store.YES) @SortableField */ 
+	optional string id = 2; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional Order order = 3; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional Payment payment = 4; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string paymentCardId = 5; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional PaymentInfo paymentInfo = 6; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string processInstanceId = 7; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional List productItems = 8; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string sagaDefinitionId = 9; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string sagaId = 10; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string serviceStatus = 11; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField
+ @VariableInfo(tags="") */ 
+	optional string shippingId = 12; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional org.kie.kogito.index.model.KogitoMetadata metadata = 13; 
+}
+/* @Indexed */ 
+message Payment { 
+	option java_package = "com.redhat.microsaga.model";
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional double amount = 1; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string currency = 2; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string id = 3; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string orderId = 4; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string paymentCardId = 5; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string status = 6; 
+}
+/* @Indexed */ 
+message PaymentInfo { 
+	option java_package = "com.redhat.microsaga.model";
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional double amount = 1; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string currency = 2; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string orderId = 3; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string paymentCardId = 4; 
+}
+/* @Indexed */ 
+message ProductItem { 
+	option java_package = "com.redhat.microsaga.model";
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional double price = 1; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional string productId = 2; 
+	/* @Field(index = Index.NO, store = Store.YES) @SortableField */ 
+	optional int32 quantity = 3; 
+}

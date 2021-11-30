@@ -1,6 +1,9 @@
 # microservices-saga-blueprint
 Architecture blueprint for demonstrating Saga with microservices
 
+
+![Architecture](./assets/architecture.png) 
+
 ## Pre-requisites
 
 ```shell
